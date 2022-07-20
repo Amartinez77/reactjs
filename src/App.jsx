@@ -1,28 +1,24 @@
 import logo from "./logo.svg";
-import "./App.css";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+
 import Navbar from "./components/NavBar/NavBar";
 import ItemListContainer from "./components/ItemListContainer/ItemListContainer";
+import "./App.css";
+
 
 function App() {
   return (
+
+    <BrowserRouter>
     <div className="App">
-          <Navbar />
-          <ItemListContainer mensaje={'Bienvenidos al Bebedero - Drink Store'} />
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+        <Navbar />
+        <Routes>
+        <Route path="/" element={<ItemListContainer mensaje={'Bienvenidos al Bebedero - Drink Store'} />} />
+        
+        </Routes>
+      </div>
+      
+    </BrowserRouter>
   );
 }
 
