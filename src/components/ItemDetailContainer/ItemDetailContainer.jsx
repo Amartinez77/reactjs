@@ -8,13 +8,13 @@ import ItemDetail from '../ItemDetail/ItemDetail';
 const ItemDetailContainer = () => {
 
   const [producto, setProducto] = useState({})
-  const {detalleId}= useParams()
-  console.log(detalleId);
-  // const { id } = useParams();
-  // console.log(id);
+  // const {detalleId}= useParams()
+  // console.log(detalleId);
+  const { id } = useParams();
+  console.log(id);
 
   useEffect(() => {
-    getFetch(detalleId).then((respuesta) => setProducto(respuesta));
+    getFetch(id).then((respuesta) => setProducto(respuesta))
   }, []);
 
   

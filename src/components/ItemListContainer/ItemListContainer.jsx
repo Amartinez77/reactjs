@@ -1,17 +1,19 @@
 import ItemCount from "../ItemCount/ItemCount";
 
 import { useState, useEffect } from "react";
-
+import { useParams } from "react-router-dom";
 import { getFetch } from "../helpers/getFetch";
 import ItemList from "../ItemList/ItemList";
-import { useParams } from "react-router-dom";
+
 
 const ItemListContainer = ({ mensaje }) => {
 
   const [productos, setProductos] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  const { categoriaId } = useParams
+  const { categoriaId } = useParams()
+
+  console.log(categoriaId);
 
   useEffect(() => {
     if (categoriaId) {
