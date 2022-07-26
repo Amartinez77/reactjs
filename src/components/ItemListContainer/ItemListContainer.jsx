@@ -4,18 +4,29 @@ import { useState, useEffect } from "react";
 
 import { getFetch } from "../helpers/getFetch";
 import ItemList from "../ItemList/ItemList";
+import { useParams } from "react-router-dom";
 
 const ItemListContainer = ({ mensaje }) => {
 
   const [productos, setProductos] = useState([]);
   const [loading, setLoading] = useState(true);
 
+  const { categoriaId } = useParams
+
   useEffect(() => {
-    getFetch() // mock de una consulta a una api
+    if (categoriaId) {
+      getFetch() // mock de una consulta a una api
+        .then((respuesta) =>setProductos(respuesta.filter((producto) => producto.categoria === categoriaId)))
+        .catch((err) => console.log(err))
+        .finally(() => setLoading(false))
+    } else {
+      getFetch() // mock de una consulta a una api
       .then((respuesta) => setProductos(respuesta))
       .catch((err) => console.log(err))
-      .finally(() => setLoading(false));
-  }, []);
+      .finally(() => setLoading(false))
+    }
+    
+  }, [categoriaId]);
 
   const onAdd = (cant) => {
     console.log(`cantidad: ${cant} `);

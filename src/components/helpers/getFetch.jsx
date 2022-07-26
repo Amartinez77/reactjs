@@ -52,17 +52,16 @@ let productos = [
 ];
 
 export const getFetch = (id) => {
-  if (id) {
+  
     return new Promise((resolve, reject) => {
       setTimeout(() => {
-        resolve(productos.find((producto) => producto.id === id));
+
+        if (id) {
+          resolve(productos.find((producto) => producto.id === id));
+        } else {
+          resolve(productos);
+        }
+        
       }, 2000);
     });
-  } else {
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        resolve(productos);
-      }, 2000);
-    });
-  }
-};
+  } 

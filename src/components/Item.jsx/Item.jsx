@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from "react-router-dom";
 
 
 const Item = ({ prod }) => {
@@ -15,10 +16,13 @@ const Item = ({ prod }) => {
         </div>
         <div className="card-footer">
           <h3>descripcion: {`${prod.descripcion}`}</h3>
-          <h4>{ `$ ${prod.precio}` }</h4>
-          <button className="btn btn-outline-primary btn-block">
-            detalle del producto
-          </button>
+
+          <h4>{`$ ${prod.precio}`}</h4>
+          <Link to={`/detalle/${prod.id}`}>
+            <button className="btn btn-outline-primary btn-block">
+              detalle del producto
+            </button>
+          </Link>
         </div>
       </div>
     </div>
