@@ -23,12 +23,16 @@ const ItemDetail = ({ producto }) => {
             <div className="card-body">
               <h5 className="card-title">{producto.marca }</h5>
               <p className="card-text">{producto.descripcion }</p>
-              <p className="card-text">{`$ ${producto.precio}` }</p>
+              <p className="card-text">{`$ ${producto.precio}`}</p>
+              <div className='Container'>
+                <ItemCount initial={1} stock={5} onAdd={onAdd} />
+              </div>
+              
             </div>
           </div>
         </div>
       </div>
-      <ItemCount initial={1} stock={5} onAdd={onAdd} />
+      
     </div>
   );
 }

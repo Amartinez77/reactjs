@@ -1,7 +1,11 @@
-import React from 'react'
+import React  from 'react'
 import Item from '../Item.jsx/Item';
 
 const ItemList = ({ productos }) => {
+
+
+
+
   return (
     <div
       style={{
@@ -9,11 +13,15 @@ const ItemList = ({ productos }) => {
         flexDirection: "row",
         flexWrap: "wrap",
       }}>
+      
       {productos?.map((prod) => (
         <Item key={prod.id} prod={prod} />
       ))}
     </div>
   );
 };
+
+
+
 
 export default ItemList;

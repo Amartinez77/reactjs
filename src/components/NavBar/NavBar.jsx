@@ -1,67 +1,49 @@
 import Cartwidget from "../Cartwidget/Cartwidget";
 import { Link, NavLink } from "react-router-dom";
 
-const Navbar = () => {
-    return (
-      <div className="container">
-        <nav className="navbar navbar-expand-lg bg-light">
-          <div className="container">
-            <Link className="navbar-brand" to="/">
-              ElBebedero
+import Container from "react-bootstrap/Container";
+
+import Nav from "react-bootstrap/Nav";
+import Navbar from "react-bootstrap/Navbar";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "../NavBar/NavBar.css";
+
+function NavScrollExample() {
+  return (
+    <Navbar bg="light" expand="lg">
+      <Container fluid>
+        <Navbar.Brand href="/">ElBebedero</Navbar.Brand>
+
+        <Navbar.Toggle aria-controls="navbarScroll" />
+        <Navbar.Collapse id="navbarScroll">
+          <Nav
+            className="me-auto my-2 my-lg-0"
+            style={{ maxHeight: "100px" }}
+            navbarScroll>
+            <NavLink className="nav-link" to="/">
+              Home
+            </NavLink>
+            <Link className="nav-link" to={"/categoria/vinos"}>
+              Vinos
             </Link>
-            <button
-              className="navbar-toggler"
-              type="button"
-              data-bs-toggle="collapse"
-              data-bs-target="#navbarSupportedContent"
-              aria-controls="navbarSupportedContent"
-              aria-expanded="false"
-              aria-label="Toggle navigation">
-              <span className="navbar-toggler-icon"></span>
-            </button>
-            <div
-              className="collapse navbar-collapse"
-              id="navbarSupportedContent">
-              <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-                <li className="nav-item">
-                  <Link className="nav-link active" aria-current="page" to="/">
-                    Home
-                  </Link>
-                </li>
-                <li className="nav-item">
-                  <NavLink className="nav-link" to={`/categoria/vinos`}>
-                    Vinos
-                  </NavLink>
-                </li>
-                <li className="nav-item">
-                  <NavLink className="nav-link" to="/categoria/cerveza">
-                    Cervezas
-                  </NavLink>
-                </li>
+            <NavLink className="nav-link" to="/categoria/cerveza">
+              Cervezas
+            </NavLink>
+            <NavLink className="nav-link" to="/categoria/licores">
+              Licores
+            </NavLink>
+            <NavLink className="nav-link" to="/categoria/varios">
+              Stuffs
+            </NavLink>
+          </Nav>
 
-                <li className="nav-item">
-                  <NavLink className="nav-link" to="/categoria/licores">
-                    Licores
-                  </NavLink>
-                </li>
+          <NavLink className="nav-link d-flex" to="/cart">
+            <Cartwidget />
+          </NavLink>
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
+  );
+}
 
-                <li className="nav-item">
-                  <NavLink className="nav-link" to="/categoria/varios">
-                    Stuffs
-                  </NavLink>
-                </li>
-
-                <li className="nav-item">
-                  <a className="nav-link" href="bodyy">
-                    <Cartwidget />
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </nav>
-      </div>
-    );
-};
-
-export default Navbar;
+export default NavScrollExample;

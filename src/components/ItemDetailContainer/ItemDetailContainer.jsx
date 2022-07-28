@@ -5,24 +5,33 @@ import { getFetch } from "../helpers/getFetch";
 import ItemDetail from '../ItemDetail/ItemDetail';
 
 
+
+
 const ItemDetailContainer = () => {
 
   const [producto, setProducto] = useState({})
+  // const [loading, setLoading] = useState(true);
   // const {detalleId}= useParams()
   // console.log(detalleId);
   const { id } = useParams();
   console.log(id);
 
   useEffect(() => {
-    getFetch(id).then((respuesta) => setProducto(respuesta))
-  }, []);
+   
+      getFetch(id)
+        .then((respuesta) => setProducto(respuesta))
+        // .finally(()=>setLoading(false))
+    
+    
+  }, [id]);
 
   
   
   return (
-    <div className='container'>
+    <div>
       ItemDetailContainer
-      <ItemDetail producto={producto} />
+    <ItemDetail producto={producto} />
+      
     
     
     
