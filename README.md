@@ -1,3 +1,28 @@
+# Nombre del Proyecto - ElBebedero - DrinkStore
+***
+
+La idea es realizar una web app de una tienda de bebidas y que sea totalmente funcional, aplicando todo lo aprendida en el curso de React en Coderhouse
+
+***
+
+## Lenguajes, frameworks y librerias
+***
+
+Para este proyecto se uso:
+* [React]  
+* [JavaScript]
+* [Html]
+* [Css]
+* [React Bootstrap]
+* [Reacstrap]
+
+***
+
+## detalles:
+***
+La idea segun lo aprendido hasta el momento es la de modularizar todas las funciones de la app. Utilicé ReactBootstrap para facilitar
+la creacion del html y algunas librerias como Reactstrap para usar los spinners de carga.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
