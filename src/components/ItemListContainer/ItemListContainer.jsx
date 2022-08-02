@@ -18,6 +18,7 @@ const ItemListContainer = ({ mensaje }) => {
 
   useEffect(() => {
     if (categoriaId) {
+      setLoading(true);
       getFetch() // mock de una consulta a una api
         .then((respuesta) =>
           setProductos(
