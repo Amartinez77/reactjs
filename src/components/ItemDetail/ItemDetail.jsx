@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import { useCartContext } from "../../Context/CartContext";
+
 
 import ButtonComprar from "../ButtonComprar/ButtonComprar";
 import ItemCount from "../ItemCount/ItemCount";
@@ -7,18 +9,27 @@ import ItemCount from "../ItemCount/ItemCount";
 // import { useParams } from "react-router-dom";
 // import { ItemDetailContainer } from "../ItemDetailContainer/ItemDetailContainer";
 
+
+
 const ItemDetail = ({ producto }) => {
+
+  const { agregarCarrito } = useCartContext()
+
+
   // estado para el count
   const [cart, setCart] = useState(true);
 
   console.log(producto);
   const onAdd = (cant) => {
     console.log(`La cantidad es:  ${cant}`);
+    agregarCarrito({ ...producto, cantidad: cant })
     setCart(false);
   };
 
+  // console.log(setCartList);
+
   return (
-    <div>
+    <div className="container">
       ItemDetail
       <div className="card mb-3">
         <div className="row g-0">

@@ -2,7 +2,7 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import ItemDetailContainer from "./components/ItemDetailContainer/ItemDetailContainer";
 import Navbar from "./components/NavBar/NavBar";
 import ItemListContainer from "./components/ItemListContainer/ItemListContainer";
-import { CartContext } from "./Context/CartContext";
+import CartContextProvider from "./Context/CartContext"
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
@@ -12,7 +12,7 @@ import ErrorPage from "./components/ErrorPage/ErrorPage";
 function App() {
   return (
     <BrowserRouter>
-      <CartContext.Provider value={{}}>
+      <CartContextProvider >
         <div className="App">
           <Navbar />
           <Routes>
@@ -25,14 +25,17 @@ function App() {
                 />
               }
             />
-            <Route path="/categoria/:categoriaId" element={<ItemListContainer />}/>
+            <Route
+              path="/categoria/:categoriaId"
+              element={<ItemListContainer />}
+            />
             <Route path="/detalle/:id" element={<ItemDetailContainer />} />
             <Route path="/cart" element={<Cart />} />
-            <Route path="/error404" element={<ErrorPage/>} />
-            <Route path="*" element={<Navigate to='/error404' />} />
+            <Route path="/error404" element={<ErrorPage />} />
+            <Route path="*" element={<Navigate to="/error404" />} />
           </Routes>
         </div>
-      </CartContext.Provider>
+      </CartContextProvider>
     </BrowserRouter>
   );
 }

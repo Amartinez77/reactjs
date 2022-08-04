@@ -109,6 +109,6 @@ export const getFetch = (id) => {
           resolve(productos);
         }
         
-      }, 2000);
+      }, 1000);
     });
   } 
