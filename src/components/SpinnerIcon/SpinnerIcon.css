@@ -1,20 +1,15 @@
-
-
 .prueba {
-
   width: 100vw;
   height: 100vh;
-
-
-  display: table-cell;
-  vertical-align: middle;
+  margin-top: 40%;
+  /* display: table-cell; */
+  /* vertical-align: middle; */
 }
 
 .spinners {
-
   width: 100px;
   height: 100px;
   margin-left: auto;
   margin-right: auto;
- 
+  top: 50%;
 }

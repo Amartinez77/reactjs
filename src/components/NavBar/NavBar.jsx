@@ -7,8 +7,13 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../NavBar/NavBar.css";
+import { useCartContext } from "../../Context/CartContext";
+import CantProd from "../CantProd/CantProd";
 
 function NavScrollExample() {
+
+  const { cantidadTotal } = useCartContext();
+
   return (
     <Navbar bg="light" expand="lg">
       <Container fluid>
@@ -37,9 +42,11 @@ function NavScrollExample() {
             </NavLink>
           </Nav>
 
-          <NavLink className="nav-link d-flex" to="/cart">
+          <Link className="nav-link d-flex" to="/cart">
+            {/* <div className="cantProductos">{cantidadTotal() !== 0 && cantidadTotal()}</div> */}
+            <CantProd/>
             <Cartwidget />
-          </NavLink>
+          </Link>
         </Navbar.Collapse>
       </Container>
     </Navbar>

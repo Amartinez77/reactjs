@@ -11,24 +11,15 @@ const CartContextProvider = ({ children }) => {
 
   const agregarCarrito = (prod) => {
     console.log(prod.cantidad);
-    // if (cartList.id === prod.id) {
-    //   cartList.cantidad = cartList.cantidad+1;
-    // } else {
-    //   setCartList([...cartList, prod]);
-    // }
-    // Crear nuevo arreglo
-    // Desestructura para crear nuevo elemento en vez de referencia
-    // Lo que te comentaba abajo, declarar la variable aparte arriba
 
     let newCart = [];
     cartList.map((item) => newCart.push({ ...item }));
     // Ver si el elemento ya existe
     let index = newCart.findIndex((item) => item.id === prod.id);
     if (index < 0) {
-  
       newCart.push({
         id: prod.id,
-        categoria: prod.categoria,        
+        categoria: prod.categoria,
         marca: prod.marca,
         tipo: prod.tipo,
         precio: prod.precio,
@@ -41,7 +32,6 @@ const CartContextProvider = ({ children }) => {
     }
     // Actualizar carrito
     setCartList((cart) => newCart);
-    
   };
 
   const vaciarCarrito = () => {
@@ -58,6 +48,21 @@ const CartContextProvider = ({ children }) => {
     }
   };
 
+  const cantidadTotal = () => {
+    return cartList.reduce(
+      (contador, produObject) => (contador += produObject.cantidad),
+      0
+    );
+  };
+
+  const precioTotal = () => {
+    return cartList.reduce(
+      (acumPrecio, prodObj) =>
+        (acumPrecio = acumPrecio + prodObj.precio * prodObj.cantidad),
+      0
+    ); // <- precioTotal
+  };
+
   return (
     <CartContext.Provider
       value={{
@@ -65,6 +70,8 @@ const CartContextProvider = ({ children }) => {
         agregarCarrito,
         vaciarCarrito,
         eliminarXunidad,
+        cantidadTotal,
+        precioTotal,
       }}>
       {children}
     </CartContext.Provider>

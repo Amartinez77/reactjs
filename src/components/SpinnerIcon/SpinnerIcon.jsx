@@ -6,10 +6,12 @@ import "../SpinnerIcon/SpinnerIcon.css"
 const SpinnerIcon = () => {
   return (
     <Container className='prueba'>
-      {/* <div> */}
-        <Spinner color="primary" className='spinners'/>
-      <h3>ElBebedero.com</h3>
-      {/* </div> */}
+      <div>
+      <Spinner color="primary" className='spinners'/>
+        <h3>ElBebedero.com</h3>
+        
+      
+      </div>
       
     </Container>
   )
