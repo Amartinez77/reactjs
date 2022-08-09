@@ -6,7 +6,7 @@ import CartEmpty from './CartEmpty'
 const Cart = () => {
 
   const { cartList, vaciarCarrito, eliminarXunidad, precioTotal } = useCartContext()
-console.log('el cartlis tiene === '+cartList);
+console.log(cartList);
   return (
     (cartList.length > 0 && (
       <div className="container">

@@ -19,9 +19,9 @@ const ItemDetail = ({ producto }) => {
   // estado para el count
   const [cart, setCart] = useState(true);
 
-  console.log(producto);
+  // console.log(producto);
   const onAdd = (cant) => {
-    console.log(`La cantidad es:  ${cant}`);
+    // console.log(`La cantidad es:  ${cant}`);
     agregarCarrito({ ...producto, cantidad: cant })
     setCart(false);
   };
