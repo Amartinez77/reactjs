@@ -34,10 +34,10 @@ function NavScrollExample() {
             <NavLink className="nav-link" to="/categoria/cerveza">
               Cervezas
             </NavLink>
-            <NavLink className="nav-link" to="/categoria/licores">
+            <NavLink className="nav-link" to="/categoria/strongDrinks">
               Licores
             </NavLink>
-            <NavLink className="nav-link" to="/categoria/varios">
+            <NavLink className="nav-link" to="/categoria/packs">
               Stuffs
             </NavLink>
           </Nav>

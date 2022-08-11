@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import { useCartContext } from "../../Context/CartContext";
 
 
@@ -42,9 +42,9 @@ const ItemDetail = ({ producto }) => {
           </div>
           <div className="col-md-8">
             <div className="card-body">
-              <h5 className="card-title">{producto.marca}</h5>
-              <p className="card-text">{producto.descripcion}</p>
-              <p className="card-text">{`$ ${producto.precio}`}</p>
+              <h5 className="card-title">{producto.brand}</h5>
+              <p className="card-text">{producto.description}</p>
+              <p className="card-text">{`$ ${producto.price}`}</p>
               <div className="Container">
                 {cart ? (
                   <ItemCount initial={1} stock={5} onAdd={onAdd} />

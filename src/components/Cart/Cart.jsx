@@ -20,7 +20,7 @@ console.log(cartList);
                   alt="Foto de producto"
                   className="w-25"
                 />
-                nombre: {item.marca} - cantidad {item.cantidad} {item.precio} -
+                nombre: {item.brand} - cantidad {item.cantidad} {item.price} -
                 Subtotal: {item.cantidad * item.precio}
               </div>
               <button
