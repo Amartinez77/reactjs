@@ -6,7 +6,9 @@ import CartEmpty from './CartEmpty'
 const Cart = () => {
 
   const { cartList, vaciarCarrito, eliminarXunidad, precioTotal } = useCartContext()
-console.log(cartList);
+  console.log(cartList);
+  
+  
   return (
     (cartList.length > 0 && (
       <div className="container">
@@ -15,13 +17,14 @@ console.log(cartList);
           {cartList.map((item) => (
             <li key={item.id}>
               <div className="w-25">
+                {console.log(item.cantidad)}
                 <img
                   src={item.imagePath}
                   alt="Foto de producto"
                   className="w-25"
                 />
                 nombre: {item.brand} - cantidad {item.cantidad} {item.price} -
-                Subtotal: {item.cantidad * item.precio}
+                Subtotal: {item.cantidad * item.price}
               </div>
               <button
                 onClick={() => {

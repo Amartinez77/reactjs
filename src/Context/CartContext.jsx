@@ -9,29 +9,21 @@ const CartContextProvider = ({ children }) => {
 
   const [cartList, setCartList] = useState([]);
 
-  const agregarCarrito = (prod) => {
-    console.log(prod.cantidad);
 
-    let newCart = [];
-    cartList.map((item) => newCart.push({ ...item }));
-    // Ver si el elemento ya existe
-    let index = newCart.findIndex((item) => item.id === prod.id);
-    if (index < 0) {
-      newCart.push({
-        id: prod.id,
-        categoria: prod.categoria,
-        marca: prod.marca,
-        tipo: prod.tipo,
-        precio: prod.precio,
-        imagePath: prod.imagePath,
-        cantidad: prod.cantidad,
-      });
+
+  const agregarCarrito = (prod) => {
+    const idx = cartList.findIndex((producto) => producto.id === prod.id); // <-
+    if (idx !== -1) {
+      // existe el producto en el carrito
+      // cartList[idx].cantidad +=   prod.cantidad
+      let cant = cartList[idx].cantidad;
+      cartList[idx].cantidad = cant + prod.cantidad;
+
+      setCartList([...cartList]);
     } else {
-      // actualizarr la cantidad
-      newCart[index].cantidad += prod.cantidad;
+      // no existe el producto en el carrito
+      setCartList([...cartList, prod]);
     }
-    // Actualizar carrito
-    setCartList((cart) => newCart);
   };
 
   const vaciarCarrito = () => {
@@ -58,7 +50,7 @@ const CartContextProvider = ({ children }) => {
   const precioTotal = () => {
     return cartList.reduce(
       (acumPrecio, prodObj) =>
-        (acumPrecio = acumPrecio + prodObj.precio * prodObj.cantidad),
+        (acumPrecio = acumPrecio + prodObj.price * prodObj.cantidad),
       0
     ); // <- precioTotal
   };

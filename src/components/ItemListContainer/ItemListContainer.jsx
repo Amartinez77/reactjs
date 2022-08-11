@@ -3,7 +3,7 @@
 import { collection, getDocs, getFirestore, query, where } from "firebase/firestore";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { getFetch } from "../helpers/getFetch";
+
 import ItemList from "../ItemList/ItemList";
 import SpinnerIcon from "../SpinnerIcon/SpinnerIcon";
 
@@ -40,38 +40,9 @@ const ItemListContainer = ({ mensaje }) => {
       .finally(() => setLoading(false));
     }
     
-
-
-
-      
-      
-
   }, [categoriaId]);
 
-  // console.log(setProductos);
 
-  // useEffect(() => {
-  //   if (categoriaId) {
-  //     setLoading(true);
-  //     getFetch() // mock de una consulta a una api
-  //       .then((respuesta) =>
-  //         setProductos(
-  //           respuesta.filter((producto) => producto.categoria === categoriaId)
-  //         )
-  //       )
-  //       .catch((err) => console.log(err))
-  //       .finally(() => setLoading(false));
-  //   } else {
-  //     getFetch() // mock de una consulta a una api
-  //       .then((respuesta) => setProductos(respuesta))
-  //       .catch((err) => console.log(err))
-  //       .finally(() => setLoading(false));
-  //   }
-  // }, [categoriaId]);
-
-  // const onAdd = (cant) => {
-  //   console.log(`cantidad: ${cant} `);
-  // };
 
   return (
     <div className="container">

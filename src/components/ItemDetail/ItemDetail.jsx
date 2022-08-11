@@ -4,10 +4,6 @@ import { useCartContext } from "../../Context/CartContext";
 
 import ButtonComprar from "../ButtonComprar/ButtonComprar";
 import ItemCount from "../ItemCount/ItemCount";
-// import { getFetch } from "../helpers/getFetch";
-// import { useEffect, useState } from "react";
-// import { useParams } from "react-router-dom";
-// import { ItemDetailContainer } from "../ItemDetailContainer/ItemDetailContainer";
 
 
 

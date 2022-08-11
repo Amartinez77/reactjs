@@ -12,7 +12,7 @@ import CantProd from "../CantProd/CantProd";
 
 function NavScrollExample() {
 
-  const { cantidadTotal } = useCartContext();
+  // const { cantidadTotal } = useCartContext();
 
   return (
     <Navbar bg="light" expand="lg">
@@ -43,7 +43,7 @@ function NavScrollExample() {
           </Nav>
 
           <Link className="nav-link d-flex" to="/cart">
-            {/* <div className="cantProductos">{cantidadTotal() !== 0 && cantidadTotal()}</div> */}
+        
             <CantProd/>
             <Cartwidget />
           </Link>
