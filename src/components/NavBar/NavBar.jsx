@@ -7,17 +7,25 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../NavBar/NavBar.css";
-import { useCartContext } from "../../Context/CartContext";
-import CantProd from "../CantProd/CantProd";
 
+import CantProd from "../CantProd/CantProd";
+import logoNav from "../../images/elbebedero3.png"
 function NavScrollExample() {
 
-  // const { cantidadTotal } = useCartContext();
+ 
 
   return (
     <Navbar bg="light" expand="lg">
       <Container fluid>
-        <Navbar.Brand href="/">ElBebedero</Navbar.Brand>
+      
+        <Link to={"/"}>
+          <img
+            src={logoNav}
+            alt=""
+            className="imgLogo"
+          />
+      </Link>
+  
 
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
@@ -43,8 +51,7 @@ function NavScrollExample() {
           </Nav>
 
           <Link className="nav-link d-flex" to="/cart">
-        
-            <CantProd/>
+            <CantProd />
             <Cartwidget />
           </Link>
         </Navbar.Collapse>

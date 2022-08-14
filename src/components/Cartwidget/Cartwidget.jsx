@@ -4,10 +4,10 @@ import CartIcon from "../assets/CartIcon"
 
 const Cartwidget = () => {
     return (
-        <div className="w-25">
+        <div className="cartIcon">
             {/* <img src={carrito} alt="" className="w-25" />
             {console.log(carrito)} */}
-        <CartIcon width={25} height={25} />
+        <CartIcon width={35} height={35} />
 
 
         </div>
