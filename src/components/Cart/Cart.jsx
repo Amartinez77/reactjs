@@ -6,8 +6,13 @@ import {
   addDoc,
   collection,
   doc,
+  documentId,
+  getDocs,
   getFirestore,
+  query,
   updateDoc,
+  where,
+  writeBatch,
 } from "firebase/firestore";
 
 const Cart = () => {
@@ -18,7 +23,7 @@ const Cart = () => {
   // console.log(cartList);
 
   // funcion que guarda la orden de compra
-  const sendOrder = (e) => {
+  const sendOrder = async (e) => {
     e.preventDefault();
 
     const order = {};
@@ -55,6 +60,25 @@ const Cart = () => {
     //       stock: 29
     //   })
     //   .then(()=> console.log('Item actualizado'))
+
+
+    // actualizar el stock
+    const queryCollectionStock = collection(db, 'products') // apuntar a una coleccion de firestore
+
+    //filtro para la consulta
+    const queryUpdateStock = query(
+      queryCollectionStock,
+      where( documentId() , 'in' , cartList.map(it => it.id))  // in es que esten en...
+    )
+
+    const batch = writeBatch(db)
+
+    await getDocs(queryUpdateStock)
+      .then(resp => resp.docs.forEach(res => batch.update(res.ref, { stock: res.data().stock - cartList.find(prod => prod.id == res.id).cantidad })))
+      .catch(err => console.log(err))
+      .finally(() => { vaciarCarrito() })
+    
+    batch.commit()
   };
 
   return (
@@ -106,9 +130,10 @@ const Cart = () => {
         <br />
         <button className="btn btn-danger" onClick={sendOrder}>
           enviar orden de compra
+          
         </button>
       </div>
-    )) || <CartEmpty />
+    )) || <CartEmpty order={id } />
   );
 };
 

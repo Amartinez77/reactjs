@@ -1,19 +1,21 @@
-import React from 'react'
-import { Container } from 'react-bootstrap'
-import ButttonSeguirCompra from '../ButttonSeguirCompra/ButttonSeguirCompra'
+import React from "react";
+import { Container } from "react-bootstrap";
 
-const CartEmpty = () => {
+import ButttonSeguirCompra from "../ButttonSeguirCompra/ButttonSeguirCompra";
+
+const CartEmpty = ({ order }) => {
   return (
     <>
+      {console.log(order)}
       <Container>
-        <h2>Carrito</h2>
-        <h3>Todavia no elegiste nada?</h3>
-      <ButttonSeguirCompra/>
+        {order ? (
+          (<div><h3>su ticket es: {order}</h3><h3>gracias por su compra!</h3> </div>)
+        ) : (
+          <ButttonSeguirCompra />
+        )}
       </Container>
-      
-
     </>
-  )
-}
+  );
+};
 
-export default CartEmpty
+export default CartEmpty;
