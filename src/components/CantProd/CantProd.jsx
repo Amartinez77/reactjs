@@ -1,24 +1,14 @@
-import React from 'react'
-import { useCartContext } from '../../Context/CartContext';
-import {  } from "../CantProd/CantProdStyle.css";
+import React from "react";
+import { useCartContext } from "../../Context/CartContext";
+import {} from "../CantProd/CantProdStyle.css";
 const CantProd = () => {
-  const { cantidadTotal } = useCartContext();
-  
-  
-  if (cantidadTotal() !== 0) {
-    return ( 
+  const { totalQuantity } = useCartContext();
 
-      <div className="cantProductos">{cantidadTotal()}</div>
-
-    )
+  if (totalQuantity() !== 0) {
+    return <div className="cantProductos">{totalQuantity()}</div>;
   } else {
-    return (
-      
-      <div></div>
-
-    )
+    return <div></div>;
   }
+};
 
-}
-
-export default CantProd
+export default CantProd;

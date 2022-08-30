@@ -1,0 +1,14 @@
+.btn-class {
+  margin: 30px;
+}
+
+.listProd {
+  background-color: beige;
+}
+
+.itemList {
+  background-color: whitesmoke;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-top: 10px;
+}

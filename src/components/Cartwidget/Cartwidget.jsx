@@ -1,19 +1,11 @@
-import CartIcon from "../assets/CartIcon"
-
-
+import CartIcon from "../assets/CartIcon";
 
 const Cartwidget = () => {
-    return (
-        <div className="cartIcon">
-            {/* <img src={carrito} alt="" className="w-25" />
-            {console.log(carrito)} */}
-        <CartIcon width={35} height={35} />
+  return (
+    <div className="cartIcon">
+      <CartIcon width={35} height={35} />
+    </div>
+  );
+};
 
-
-        </div>
-
-
-    )    
-}
-
-export default Cartwidget
+export default Cartwidget;

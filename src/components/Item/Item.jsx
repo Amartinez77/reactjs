@@ -1,22 +1,18 @@
-import React from 'react'
+import React from "react";
 import { Link } from "react-router-dom";
-
+import "../Item/Item.css";
+import StockControl from "../helpers/StockControl.jsx";
 
 const Item = ({ prod }) => {
   return (
-    <div
-      className="col-md-4 p-1"
-      //key={prod.id}
-    >
-      <div className="card w-100 mt-5">
+    <div className="col colCard mb-3">
+      <div className="card w-100 h-100 mt-3">
         <div className="card-header">{`${prod.brand} - ${prod.category}`}</div>
-        <div className="card-body">
-          <img src={prod.imagePath} alt="" className="w-50" />
-          
+        <div className="card-body overflow">
+          <img src={prod.imagePath} alt="" className="card-img-top" />
         </div>
         <div className="card-footer">
-          <h3>descripcion: {`${prod.description}`}</h3>
-          <h3>{`  stock: ${prod.stock}`} </h3>
+          <StockControl stock={prod.stock} />
 
           <h4>{`$ ${prod.price}`}</h4>
           <Link to={`/detalle/${prod.id}`}>

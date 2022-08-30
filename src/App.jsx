@@ -2,29 +2,27 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import ItemDetailContainer from "./components/ItemDetailContainer/ItemDetailContainer";
 import Navbar from "./components/NavBar/NavBar";
 import ItemListContainer from "./components/ItemListContainer/ItemListContainer";
-import CartContextProvider from "./Context/CartContext"
-
+import CartContextProvider from "./Context/CartContext";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import Cart from "./components/Cart/Cart";
 import ErrorPage from "./components/ErrorPage/ErrorPage";
+import Col from "react-bootstrap/Col";
+import Footer from "./components/Footer/Footer";
 
 function App() {
   return (
     <BrowserRouter>
-      <CartContextProvider >
-        <div className="App">
+      <CartContextProvider>
+        <div className="App ">
           <Navbar />
+          <Col>
+            <div className="container">
+              <h1 className="text-center">Bienvenidos al Bebedero</h1>
+            </div>
+          </Col>
           <Routes>
-            <Route
-              index
-              path="/"
-              element={
-                <ItemListContainer
-                  mensaje={"Bienvenidos al Bebedero - Drink Store"}
-                />
-              }
-            />
+            <Route index path="/" element={<ItemListContainer />} />
             <Route
               path="/categoria/:categoriaId"
               element={<ItemListContainer />}
@@ -34,6 +32,7 @@ function App() {
             <Route path="/error404" element={<ErrorPage />} />
             <Route path="*" element={<Navigate to="/error404" />} />
           </Routes>
+          <Footer />
         </div>
       </CartContextProvider>
     </BrowserRouter>

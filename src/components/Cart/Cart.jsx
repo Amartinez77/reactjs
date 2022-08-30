@@ -1,139 +1,89 @@
-import React, { useState } from "react";
+import React from "react";
 import { useCartContext } from "../../Context/CartContext";
 import ButttonSeguirCompra from "../ButttonSeguirCompra/ButttonSeguirCompra";
 import CartEmpty from "./CartEmpty";
-import {
-  addDoc,
-  collection,
-  doc,
-  documentId,
-  getDocs,
-  getFirestore,
-  query,
-  updateDoc,
-  where,
-  writeBatch,
-} from "firebase/firestore";
+import CartForm from "./CartForm";
+import { useSendOrderFirebase } from "../../Hooks/useSendOrderFirebase";
+import "../Cart/cart.css";
 
 const Cart = () => {
-  const { cartList, vaciarCarrito, eliminarXunidad, precioTotal } =
-    useCartContext();
-  const [id, setId] = useState("");
-  const [date, setDate] = useState({});
-  // console.log(cartList);
+  const { cartList, emptyCart, removeUnit, totalPrice } = useCartContext();
 
-  // funcion que guarda la orden de compra
-  const sendOrder = async (e) => {
-    e.preventDefault();
-
-    const order = {};
-    order.buyer = {
-      email: "pepe@gmail.com",
-      name: "pepe",
-      phone: "38884516161",
-    };
-
-    order.items = cartList.map((prod) => {
-      return {
-        product: prod.brand,
-        id: prod.id,
-        price: prod.price,
-      };
-    });
-
-    order.date = new Date();
-    order.total = precioTotal();
-
-    // console.log(order);
-    // guardar orden en la base de datos
-
-    const db = getFirestore();
-    const queryOrders = collection(db, "orders");
-    addDoc(queryOrders, order)
-      .then((resp) => setId(resp.id))
-      .catch((err) => console.log(err));
-
-    // actualizar un documento
-
-    //   const queryUpdateDoc = doc(db, 'products', 'A59XJcDJSMZIW1GPk949')
-    //   updateDoc(queryUpdateDoc, {
-    //       stock: 29
-    //   })
-    //   .then(()=> console.log('Item actualizado'))
-
-
-    // actualizar el stock
-    const queryCollectionStock = collection(db, 'products') // apuntar a una coleccion de firestore
-
-    //filtro para la consulta
-    const queryUpdateStock = query(
-      queryCollectionStock,
-      where( documentId() , 'in' , cartList.map(it => it.id))  // in es que esten en...
-    )
-
-    const batch = writeBatch(db)
-
-    await getDocs(queryUpdateStock)
-      .then(resp => resp.docs.forEach(res => batch.update(res.ref, { stock: res.data().stock - cartList.find(prod => prod.id == res.id).cantidad })))
-      .catch(err => console.log(err))
-      .finally(() => { vaciarCarrito() })
-    
-    batch.commit()
-  };
+  const { sendOrder, id } = useSendOrderFirebase(
+    cartList,
+    totalPrice,
+    emptyCart
+  );
 
   return (
     (cartList.length > 0 && (
       <div className="container">
-        <h2>Cart</h2>
-        {id.length > 0 ? (
-          <>
-            <h2>El id de la orden es: {id}</h2>            
-            <h3>gracias por su compra</h3>
-          </>
-        ) : (
-          <ul>
-            {cartList.map((item) => (
-              <li key={item.id}>
-                <div className="w-25">
-                  {console.log(item.cantidad)}
-                  <img
-                    src={item.imagePath}
-                    alt="Foto de producto"
-                    className="w-25"
-                  />
-                  nombre: {item.brand} - cantidad {item.cantidad} {item.price} -
-                  Subtotal: {item.cantidad * item.price}
-                </div>
-                <button
-                  onClick={() => {
-                    eliminarXunidad(item.id);
-                  }}>
-                  {" "}
-                  X{" "}
-                </button>
-              </li>
-            ))}
-          </ul>
-        )}
+        <h2 className="text-start">Mi carrito</h2>
+        <div className="row mt-5">
+          {id.length > 0 ? (
+            <>
+              <h2>El id de la orden es: {id}</h2>
+              <h3>gracias por su compra</h3>
+            </>
+          ) : (
+            <div className="col listProd">
+              <div className="container ">
+                <ul>
+                  {cartList.map((item) => (
+                    <li
+                      key={item.id}
+                      className="list-group-item list-group-item-action d-flex gap-3 py-3 mb-3 itemList"
+                      aria-current="true">
+                      <img
+                        src={item.imagePath}
+                        alt="twbs"
+                        width="100"
+                        height="100"
+                        className="rounded-circle flex-shrink-0"
+                      />
+                      <div className="d-flex gap-2 w-100 justify-content-between">
+                        <div>
+                          <h6 className="mb-0">{item.brand}</h6>
+                          <p className="mb-0 opacity-75">
+                            cantidad {item.cantidad}
+                          </p>
+                          <p className="mb-0 opacity-75">
+                            {item.cantidad * item.price}
+                          </p>
+                        </div>
+                        <button
+                          className="btn btn-danger btn-class"
+                          onClick={() => {
+                            removeUnit(item.id);
+                          }}>
+                          {" "}
+                          X{" "}
+                        </button>
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          )}
+          <CartForm sendOrder={sendOrder} />
+          <div>
+            <h4>
+              total: <span>{totalPrice()}</span>
+            </h4>
+          </div>
+          <div>
+            <button className="btn btn-danger" onClick={emptyCart}>
+              Vaciar carrito
+            </button>
 
-        <div>
-          <h4>
-            total: <span>{precioTotal()}</span>
-          </h4>
+            <br />
+            <ButttonSeguirCompra />
+            <br />
+          </div>
         </div>
-        <button className="btn btn-danger" onClick={vaciarCarrito}>
-          Vaciar todo el carrito
-        </button>
-
-        <br />
-        <ButttonSeguirCompra />
-        <br />
-        <button className="btn btn-danger" onClick={sendOrder}>
-          enviar orden de compra
-          
-        </button>
       </div>
-    )) || <CartEmpty order={id } />
+    )) || <CartEmpty order={id} />
   );
 };
 

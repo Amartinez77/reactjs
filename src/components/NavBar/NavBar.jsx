@@ -1,31 +1,21 @@
 import Cartwidget from "../Cartwidget/Cartwidget";
 import { Link, NavLink } from "react-router-dom";
-
 import Container from "react-bootstrap/Container";
-
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../NavBar/NavBar.css";
-
 import CantProd from "../CantProd/CantProd";
-import logoNav from "../../images/elbebedero3.png"
-function NavScrollExample() {
+import logoNav from "../../images/elbebedero3.png";
 
- 
 
+function NavBar () {
   return (
     <Navbar bg="light" expand="lg">
       <Container fluid>
-      
         <Link to={"/"}>
-          <img
-            src={logoNav}
-            alt=""
-            className="imgLogo"
-          />
-      </Link>
-  
+          <img src={logoNav} alt="" className="imgLogo" />
+        </Link>
 
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
@@ -60,4 +50,5 @@ function NavScrollExample() {
   );
 }
 
-export default NavScrollExample;
+export default NavBar
+

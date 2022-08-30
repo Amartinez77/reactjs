@@ -1,39 +1,31 @@
-
-import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import { doc, getDoc, getFirestore } from "firebase/firestore";
-import ItemDetail from '../ItemDetail/ItemDetail';
+import ItemDetail from "../ItemDetail/ItemDetail";
 import SpinnerIcon from "../SpinnerIcon/SpinnerIcon";
-
-
-
+import { Col, Row } from "react-bootstrap";
+import ToolBar from "../ToolBar/ToolBar";
+import { useGetProductFirebase } from "../../Hooks/useGetProductFirebase";
+import ErrorPage from "../ErrorPage/ErrorPage";
 
 const ItemDetailContainer = () => {
-  const [producto, setProducto] = useState({});
-  const [loading, setLoading] = useState(true);
-  // const {detalleId}= useParams()
-  // console.log(detalleId);
-  const { id } = useParams();
-
-  console.log(id);
-
-  // traer un producto por id -> ItemDetailContainer
-  useEffect(()=>{
-    const db = getFirestore()
-    setLoading(true);
-      const queryProducto = doc(db, 'products', id)
-      getDoc(queryProducto)
-        .then((resp) => setProducto({ id: resp.id, ...resp.data() }))
-        .finally(() => setLoading(false));
-  }, [id])
-
+  const [product, loading, response] = useGetProductFirebase();
+  console.log(response);
 
   return (
     <>
-      ItemDetailContainer
-      {loading ? <SpinnerIcon /> : <ItemDetail producto={producto} />}
+      {response ? (
+        <Row className="row-center">
+          <Col md="auto" className="sideBar">
+            <ToolBar />
+          </Col>
+
+          <Col className="centerPage">
+            {loading ? <SpinnerIcon /> : <ItemDetail product={product} />}
+          </Col>
+        </Row>
+      ) : (
+        <ErrorPage />
+      )}
     </>
   );
-}
+};
 
-export default ItemDetailContainer
+export default ItemDetailContainer;
