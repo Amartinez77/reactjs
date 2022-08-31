@@ -16,10 +16,11 @@ Para este proyecto se uso:
 * [Css] 3
 * [Bootstrap] version 5.2.0 - framework css
 * [react-router-dom] version 6.3.0 - se utilizo para facilitar la navegabilidad
-* [React Bootstrap] version 2.4.0 - framework css
+* [React-Bootstrap] version 2.4.0 - framework css
 * [Reacstrap] 9.1.2 - loaders
 * [React-toastify] ^9.0.8 - mejorar la experiencia de usuario
 * [Sweetalert] ^2.1.2 - mejorar la experiencia de usuario
+* [Firebase]  9.9.1 - Backend - manejo de base de datos
 
 ***
 
