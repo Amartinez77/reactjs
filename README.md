@@ -1,7 +1,7 @@
 # Nombre del Proyecto - ElBebedero - DrinkStore
 ***
 
-La idea es realizar una web app de una tienda de bebidas y que sea totalmente funcional, aplicando todo lo aprendida en el curso de React en Coderhouse
+La idea es realizar una web app de una tienda de bebidas que sea totalmente funcional, aplicando todo lo aprendido en el curso de React en Coderhouse
 
 ***
 
@@ -9,48 +9,47 @@ La idea es realizar una web app de una tienda de bebidas y que sea totalmente fu
 ***
 
 Para este proyecto se uso:
-* [React]  
-* [JavaScript]
-* [Html]
-* [Css]
-* [React Bootstrap]
-* [Reacstrap]
+
+* [React]  version 18.2.0
+* [JavaScript] vanilla ES6
+* [Html] 5
+* [Css] 3
+* [Bootstrap] version 5.2.0 - framework css
+* [react-router-dom] version 6.3.0 - se utilizo para facilitar la navegabilidad
+* [React Bootstrap] version 2.4.0 - framework css
+* [Reacstrap] 9.1.2 - loaders
+* [React-toastify] ^9.0.8 - mejorar la experiencia de usuario
+* [Sweetalert] ^2.1.2 - mejorar la experiencia de usuario
 
 ***
 
-## detalles:
-***
+## Detalles:
+
 La idea segun lo aprendido hasta el momento es la de modularizar todas las funciones de la app. Utilicé ReactBootstrap para facilitar
 la creacion del html y algunas librerias como Reactstrap para usar los spinners de carga.
 
-# Getting Started with Create React App
+# Este proyecto fue iniciado con Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+[Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
 
-In the project directory, you can run:
+Para iniciar el proyecto se debe iniciar:
 
 ### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Luego de iniciar ingresar en el navegador.\
+ [http://localhost:3000](http://localhost:3000) para verlo en el navegador.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Recargar la página para que los cambios surgan efecto.\
 
 ### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+construye la aplicacion para producción, en la carpeta `build`.\
 
-The build is minified and the filenames include the hashes.\
 Your app is ready to be deployed!
+
+## No olvides instalar las dependencias con [npm install] en la carpeta del proyecto
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
