@@ -5,6 +5,8 @@ import ButtonComprar from "../ButtonComprar/ButtonComprar";
 import ItemCount from "../ItemCount/ItemCount";
 import "../ItemDetail/ItemDetail.css";
 
+import "react-toastify/dist/ReactToastify.min.css";
+
 const ItemDetail = ({ product }) => {
   const { addCart } = useCartContext();
 
@@ -15,7 +17,7 @@ const ItemDetail = ({ product }) => {
     addCart({ ...product, cantidad: cant });
     setCart(false);
   };
-  
+
   return (
     <div className="container">
       <div className="card mb-3 shad">
@@ -31,6 +33,7 @@ const ItemDetail = ({ product }) => {
             <div className="card-body">
               <h5 className="card-title text-center">{product.brand}</h5>
               <p className="card-text text-center">{product.description}</p>
+
               <p className="card-text">{`$ ${product.price}`}</p>
               {cart ? (
                 <ItemCount initial={1} stock={product.stock} onAdd={onAdd} />

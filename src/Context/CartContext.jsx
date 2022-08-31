@@ -1,4 +1,5 @@
 import { createContext, useContext, useState } from "react";
+import swal from "sweetalert";
 
 const CartContext = createContext([]);
 
@@ -7,6 +8,7 @@ export const useCartContext = () => useContext(CartContext);
 /* A React Context Provider. It is a component that provides a context to its children. */
 const CartContextProvider = ({ children }) => {
   const [cartList, setCartList] = useState([]);
+ 
 
   /**
    * If the product is already in the cart, increase the quantity by the amount added. Otherwise, add
@@ -28,16 +30,32 @@ const CartContextProvider = ({ children }) => {
     setCartList([]);
   };
 
+  
+
   /**
    * If the user confirms the deletion, then filter the cartList array to remove the item with the
    * matching id, and set the new array as the new cartList.
    * @returns the value of the function.
    */
   const removeUnit = (id) => {
-    let isDelete = window.confirm(`esta seguro?`);
-    if (isDelete) {
+    
+    // let isDelete = window.confirm(`esta seguro?`);
+
+    const deletes = () => {
+      swal({
+        text: 'Producto eliminado',
+        icon: 'success',
+        timer: '1000'
+      })
+      }
+
+    deletes()
+    
+
+    if (deletes) {
       let arrayNuevo = cartList.filter((el) => el.id !== id);
       setCartList(arrayNuevo);
+      
     } else {
       return;
     }

@@ -11,7 +11,7 @@ const ItemListContainer = () => {
   return (
     <div className="container-fluid">
       <Row className="row-center mb-3">
-        <Col md="auto" className="sideBar">
+        <Col md="col col-md-2" className="sideBar">
           <ToolBar />
         </Col>
         <Col className="centerPage">

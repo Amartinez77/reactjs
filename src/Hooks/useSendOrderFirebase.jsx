@@ -19,7 +19,7 @@ export const useSendOrderFirebase = (cartList, totalPrice, emptyCart) => {
   const [id, setId] = useState("");
 
   const sendOrder = async (e, form) => {
-    console.log(form);
+
     e.preventDefault();
 
     const order = {};

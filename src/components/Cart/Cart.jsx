@@ -4,16 +4,21 @@ import ButttonSeguirCompra from "../ButttonSeguirCompra/ButttonSeguirCompra";
 import CartEmpty from "./CartEmpty";
 import CartForm from "./CartForm";
 import { useSendOrderFirebase } from "../../Hooks/useSendOrderFirebase";
+
 import "../Cart/cart.css";
 
 const Cart = () => {
   const { cartList, emptyCart, removeUnit, totalPrice } = useCartContext();
+
 
   const { sendOrder, id } = useSendOrderFirebase(
     cartList,
     totalPrice,
     emptyCart
   );
+
+
+
 
   return (
     (cartList.length > 0 && (

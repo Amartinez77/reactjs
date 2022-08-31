@@ -42,12 +42,12 @@ export const useForm = (initialForm, validateForm) => {
  */
   const handleSubmit = (e) => {
     e.preventDefault();
-    setErrors(validateForm(form));
+    setErrors(validateForm(form))
 
     if (Object.keys(errors).length === 0) {
-      console.log(form);
+      
 
-      alert("enviando formu");
+
       setResponse(true);
     } else {
       return;

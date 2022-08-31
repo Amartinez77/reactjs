@@ -7,7 +7,7 @@ import ErrorPage from "../ErrorPage/ErrorPage";
 
 const ItemDetailContainer = () => {
   const [product, loading, response] = useGetProductFirebase();
-  console.log(response);
+
 
   return (
     <>

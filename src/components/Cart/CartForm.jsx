@@ -17,9 +17,14 @@ const initialForm = {
  */
 const validationsForm = (form) => {
   let errors = {};
+  let validName = /^[A-Za-zÑñÁáÉéÍíÓóÚúÜü\s]+$/;
+  let validEmail = /^(\w+[/./-]?){1,}@[a-z]+[/.]\w{2,}$/;
+ 
 
   if (!form.name.trim()) {
     errors.name = "El campo 'Nombre' es requerido";
+  } else if (!validName.test(form.name.trim())) {
+    errors.name= "El campo 'Nombre' solo acepta letras y espacios "
   }
 
   if (!form.phone.trim()) {
@@ -28,6 +33,8 @@ const validationsForm = (form) => {
 
   if (!form.email.trim()) {
     errors.email = "El campo 'Email' es requerido";
+  } else if (!validEmail.test(form.email.trim())) {
+    errors.email = "El campo 'Email' tiene que ser formato a@a.com";
   }
 
   if (!form.rEmail.trim()) {
@@ -44,24 +51,23 @@ const CartForm = ({ sendOrder }) => {
   const { form, errors, response, handleChange, handleCheck, handleSubmit } =
     useForm(initialForm, validationsForm);
   
-  console.log(form);
-  console.log(response);
+
   const enviar = (e) => {
-    console.log(form);
     if (response) {
       sendOrder(e, form);
     } else {
-      alert("debe completar los campos")
+      // alert("debe completar los campos")
       return;
       
     } 
   }
 
-  console.log(errors);
+
   return (
     <div className="col col-5 formContainer">
       <div className="container ">
         <form onSubmit={handleSubmit}>
+          <h3>Complete el siguiente formulario para finalizar su compra</h3>
           <div className="form-floating mb-3 mt-3">
             <input
               className="form-control"
@@ -129,11 +135,11 @@ const CartForm = ({ sendOrder }) => {
 
           {errors.rEmail && <p>{errors.rEmail}</p>}
 
-          <input type="submit" value="enviar" />
+          <input type="submit" value="aceptar" />
         </form>
       </div>
-          {response && <button className="btn btn-danger" onClick={enviar}>
-        enviar orden de compra
+          {response && <button className="btn btn-success text-center" onClick={enviar}>
+        finalizar compra
       </button>}
       
     </div>

@@ -3,14 +3,18 @@ import ItemDetailContainer from "./components/ItemDetailContainer/ItemDetailCont
 import Navbar from "./components/NavBar/NavBar";
 import ItemListContainer from "./components/ItemListContainer/ItemListContainer";
 import CartContextProvider from "./Context/CartContext";
-import "bootstrap/dist/css/bootstrap.min.css";
-import "./App.css";
 import Cart from "./components/Cart/Cart";
 import ErrorPage from "./components/ErrorPage/ErrorPage";
 import Col from "react-bootstrap/Col";
 import Footer from "./components/Footer/Footer";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "react-toastify/dist/ReactToastify.min.css";
+import "./App.css";
 
 function App() {
+
+
+
   return (
     <BrowserRouter>
       <CartContextProvider>
@@ -19,6 +23,7 @@ function App() {
           <Col>
             <div className="container">
               <h1 className="text-center">Bienvenidos al Bebedero</h1>
+
             </div>
           </Col>
           <Routes>

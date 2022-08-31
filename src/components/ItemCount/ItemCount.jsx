@@ -1,5 +1,6 @@
 import React from "react";
 import { useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
 
 /* The above code is a React component that is used to add items to a shopping cart. */
 const ItemCount = ({ initial = 1, stock = 10, onAdd }) => {
@@ -8,11 +9,14 @@ const ItemCount = ({ initial = 1, stock = 10, onAdd }) => {
   /**
    * If the count is less than the stock, add one to the count, otherwise log a message to the console.
    */
+
+  const notify2 = () => toast("no hay stock !");
   const add = () => {
     if (count < stock) {
       setCount(count + 1);
     } else {
-      console.log("excede stock");
+      notify2()
+     
     }
   };
 
@@ -25,14 +29,19 @@ const ItemCount = ({ initial = 1, stock = 10, onAdd }) => {
     }
   };
 
+
+const notify = () => toast("producto agregado !");
  /**
   * If the count is less than the stock, then add the count to the cart.
   */
   const addCart = () => {
     if (count < stock) {
       onAdd(count);
+      notify();
     }
   };
+
+  
 
   return (
     <div>
@@ -46,9 +55,10 @@ const ItemCount = ({ initial = 1, stock = 10, onAdd }) => {
             -
           </button>
         </div>
-        <button className="btn btn-success col" onClick={addCart}>
+        <button className="btn btn-success col" onClick={ addCart}>
           Agregar al carrito
         </button>
+        <ToastContainer />
       </div>
     </div>
   );
